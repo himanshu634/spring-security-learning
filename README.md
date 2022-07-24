@@ -1,2 +1,2 @@
-# spring-security-learning
-Learning spring-security
+# Spring security Learning
+Learning spring-security by implementing some basic user login and register features.

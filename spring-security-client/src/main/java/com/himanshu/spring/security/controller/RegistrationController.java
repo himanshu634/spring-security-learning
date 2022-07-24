@@ -21,7 +21,7 @@ public class RegistrationController {
 
     private ApplicationEventPublisher publisher;
 
-    @PostMapping("/register-user")
+    @PostMapping("/register")
     public String registerUser(@RequestBody UserModel userModel, final HttpServletRequest request){
         User user = userService.registerUser(userModel);
         publisher.publishEvent(new RegistrationCompletionEvent(
