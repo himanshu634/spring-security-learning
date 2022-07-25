@@ -1,11 +1,11 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/user-registration
+    url: jdbc:mysql://localhost:3306/usr_reg
     username: root
     password: Hima@63546
     driver-class-name: com.mysql.cj.jdbc.Driver
 
-    jpa:
-      show-sql: true
-      hibernate:
-        ddl-auto: update
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
