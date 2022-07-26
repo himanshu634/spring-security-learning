@@ -35,7 +35,7 @@ public class RegistrationController {
         return user.toString();
     }
 
-    @GetMapping("/")
+    @GetMapping("api/hello")
     public String hello(){
         return "hello from register user";
     }
