@@ -9,11 +9,16 @@ import com.himanshu.spring.security.service.UserService;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
+import org.springframework.security.oauth2.client.annotation.RegisteredOAuth2AuthorizedClient;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.reactive.function.client.WebClient;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Optional;
 import java.util.UUID;
+
+import static org.springframework.security.oauth2.client.web.reactive.function.client.ServletOAuth2AuthorizedClientExchangeFilterFunction.oauth2AuthorizedClient;
 
 @RestController
 public class RegistrationController {
@@ -24,6 +29,9 @@ public class RegistrationController {
 
     @Autowired
     private ApplicationEventPublisher publisher;
+
+    @Autowired
+    private WebClient webClient;
 
     @PostMapping("/register")
     public String registerUser(@RequestBody UserModel userModel, final HttpServletRequest request){
@@ -38,6 +46,19 @@ public class RegistrationController {
     @GetMapping("api/hello")
     public String hello(){
         return "hello from register user";
+    }
+
+    @GetMapping("/api/users")
+    public String[] users(
+            @RegisteredOAuth2AuthorizedClient("api-client-authorization-code")
+            OAuth2AuthorizedClient client){
+        return this.webClient
+                .get()
+                .uri("http://127.0.0.1:8090/api/users")
+                .attributes(oauth2AuthorizedClient(client))
+                .retrieve()
+                .bodyToMono(String[].class)
+                .block();
     }
 
     private String applicationUrl(HttpServletRequest request){

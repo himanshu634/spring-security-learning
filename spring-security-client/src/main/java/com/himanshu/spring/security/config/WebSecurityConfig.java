@@ -1,6 +1,5 @@
 package com.himanshu.spring.security.config;
 
-import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.Customizer;
@@ -28,8 +27,8 @@ public class WebSecurityConfig{
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
-        http.
-                cors()
+        http
+                .cors()
                 .and()
                 .csrf()
                 .disable()

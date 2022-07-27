@@ -32,4 +32,4 @@ spring:
             client-name: api-client-authorization-code
         provider:
           spring:
-            issuer-url: http://auth-server:9090
+            issuer-uri: http://auth-server:9090

@@ -9,12 +9,14 @@
         <outputRelativeToContentRoot value="true" />
         <module name="spring-security (1) (com.himanshu)" />
         <module name="Oauth-authorization-server" />
+        <module name="oauth-resource-server" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Oauth-authorization-server" options="-parameters" />
+      <module name="oauth-resource-server" options="-parameters" />
       <module name="spring-security (1) (com.himanshu)" options="-parameters" />
     </option>
   </component>
